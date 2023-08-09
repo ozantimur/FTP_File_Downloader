@@ -28,8 +28,8 @@ public class SFTPDownload {
     public void sftpDownload() {
 
         JSch jsch = new JSch();
-        Session session = null;
-        ChannelSftp sftpChannel = null;
+        Session session;
+        ChannelSftp sftpChannel;
 
 
 
