@@ -48,7 +48,7 @@ public class FileReader {
                 for (String text : texts) {
                     if (text.indexOf(matrix[i][0]) == 0) {
                         String info = text.substring(Integer.parseInt(matrix[i][1]));
-                        info = info.replaceAll(" ", "");
+                        info = info.trim();
                         System.out.println(info);
                         infos.add(info);
                         texts.remove(text);
