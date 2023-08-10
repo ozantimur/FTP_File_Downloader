@@ -60,16 +60,14 @@ public class FileReader {
             texts.remove("Resource Paths:");
 
             for (String path : texts) {
-                String info = path.replaceAll(" ", "");
-                info = info.replaceAll("-", "");
+
+                int index = path.indexOf("-");
+                String info = path.substring(0, index) + path.substring(index+1);
+                info = info.trim();
                 resourcePaths += info + " ";
-                System.out.println(info);
             }
 
             infos.add(resourcePaths);
-
-
-
 
         } catch (Exception e) {
            e.printStackTrace();
