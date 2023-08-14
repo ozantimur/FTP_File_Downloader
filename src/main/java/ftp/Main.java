@@ -13,7 +13,7 @@ public class Main {
         String targetPath;
         String resourcePath;
 
-        String zipName = "zipFolder.zip";
+        String zipName;
 
         ArrayList<String> infos;
 
@@ -36,22 +36,24 @@ public class Main {
         targetPath = fileNameChanger.change(targetPath);
         resourcePath = fileNameChanger.change(resourcePath);
 
+        zipName = targetPath.substring(targetPath.lastIndexOf("/")+1) + ".zip";
+        String createCommand = "zip -r " + zipName + " " + resourcePath;
 
-        String command = "zip -r " + zipName + " " + resourcePath;
-
-        SSHConnection SSHConnection = new SSHConnection(server, username, password, command, port);
-        SSHConnection.sshConnection();
+        SSHConnection create = new SSHConnection(server, username, password, createCommand, port);
+        create.sshConnection();
 
         if (port == 22) {
-            SFTPDownload sftpDownload = new SFTPDownload(server, port, username, password, targetPath);
+            SFTPDownload sftpDownload = new SFTPDownload(server, port, username, password, targetPath, zipName);
             sftpDownload.sftpDownload();
         } else if (port == 21) {
-            FTPDownload ftpDownload = new FTPDownload(server, port, username, password, targetPath);
+            FTPDownload ftpDownload = new FTPDownload(server, port, username, password, targetPath, zipName);
             ftpDownload.ftpDownload();
         }
 
+        String deleteCommand = "rm -r " + zipName;
 
-
+        SSHConnection delete = new SSHConnection(server, username, password, deleteCommand, port);
+        delete.sshConnection();
 
     }
 }

@@ -16,13 +16,15 @@ public class SFTPDownload {
     String username;
     String password;
     String targetPath;
+    String resourcePath;
 
-    public SFTPDownload(String server, int port, String username, String password, String targetPath) {
+    public SFTPDownload(String server, int port, String username, String password, String targetPath, String resourcePath) {
         this.server = server;
         this.port = port;
         this.username = username;
         this.password = password;
         this.targetPath = targetPath;
+        this.resourcePath = resourcePath;
     }
 
     public void sftpDownload() {
@@ -31,9 +33,6 @@ public class SFTPDownload {
         Session session;
         ChannelSftp sftpChannel;
 
-
-
-        String resourcePath = "zipFolder.zip";
 
         try {
             session = jsch.getSession(username, server, port);
@@ -57,8 +56,6 @@ public class SFTPDownload {
                     downloadFile(sftpChannel, remoteFilePath, localFilePath);
                 }
             }
-
-
 
             sftpChannel.exit();
             session.disconnect();

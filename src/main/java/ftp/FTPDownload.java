@@ -15,14 +15,15 @@ public class FTPDownload {
     String username;
     String password;
     String targetPath;
+    String resourcePath;
 
-    String resourcePath = "zipFolder.zip";
-    public FTPDownload(String server, int port, String username, String password, String targetPath) {
+    public FTPDownload(String server, int port, String username, String password, String targetPath, String resourcePath) {
         this.server = server;
         this.port = port;
         this.username = username;
         this.password = password;
         this.targetPath = targetPath;
+        this.resourcePath = resourcePath;
     }
 
     public void ftpDownload() {
