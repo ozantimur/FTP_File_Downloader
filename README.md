@@ -23,12 +23,15 @@ The FTP File Downloader is a Java application that empowers users to effortlessl
 ### Configuration
 1. Create a text file with the following format, specifying server and authentication details:
    ```plaintext
-   Host (IP address)
-   Protocol type (FTP or SFTP)
-   Username
-   Password
-   Target file path
-   Resource paths (each path on a new line)
+   IP Address: 192.168.1.100
+   Protocol: FTP
+   Username: user
+   Password: password
+   Target Path: /remote/files/
+   Resource Paths: (each path on a new line)
+   - /local/files/file1.txt
+   - /local/files/file2.jpg
+   - /local/files/folder/file3.pdf
 
 2. Make sure to have the necessary dependencies listed in your pom.xml file, including commons-net and jsch libraries.
 
